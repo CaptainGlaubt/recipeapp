@@ -73,7 +73,7 @@
 				<configuration>
 					<includes>**/*IT</includes>
 					<additionalClasspathElements>
-						<additionalClasspathElement>${basedir}/target/classes)</additionalClasspathElement>
+						<additionalClasspathElement>${basedir}/target/classes</additionalClasspathElement>
 					</additionalClasspathElements>
 					<parallel>none</parallel>
 				</configuration>
