@@ -7,12 +7,16 @@ import javax.persistence.Id;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @NoArgsConstructor
 @Entity
 public class UnitOfMeasure {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String unitOfMeasure;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long   id;
+    private String unitOfMeasure;
 }
+
+
+//~ Formatted by Jindent --- http://www.jindent.com

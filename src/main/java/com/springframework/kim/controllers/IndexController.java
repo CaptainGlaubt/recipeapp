@@ -11,17 +11,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class IndexController {
+    private final RecipeService recipeService;
 
-	private final RecipeService recipeService;
+    public IndexController(RecipeService recipeService) {
+        this.recipeService = recipeService;
+    }
 
-	public IndexController(RecipeService recipeService) {
-		this.recipeService = recipeService;
-	}
+    @RequestMapping({ "", "/", "/index" })
+    public String getIndexPage(Model model) {
+        log.debug("In getIndexPage");
+        model.addAttribute("recipes", recipeService.getAllRecipes());
 
-	@RequestMapping({ "", "/", "/index" })
-	public String getIndexPage(Model model) {
-		log.debug("In getIndexPage");
-		model.addAttribute("recipes", recipeService.getAllRecipes());
-		return "index";
-	}
+        return "index";
+    }
 }
+
+
+//~ Formatted by Jindent --- http://www.jindent.com
