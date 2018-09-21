@@ -1,4 +1,4 @@
-package com.springframework.kim;
+package com.springframework.kim.controllers;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;

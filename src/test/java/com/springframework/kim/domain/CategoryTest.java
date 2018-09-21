@@ -1,4 +1,4 @@
-package com.springframework.kim;
+package com.springframework.kim.domain;
 
 import static org.junit.Assert.assertEquals;
 

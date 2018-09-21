@@ -12,5 +12,4 @@ public class RecipeAppApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
 }
