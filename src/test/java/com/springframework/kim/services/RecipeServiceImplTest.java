@@ -17,7 +17,7 @@ import com.springframework.kim.domain.Recipe;
 import com.springframework.kim.repositories.RecipeRepository;
 import com.springframework.kim.services.RecipeService;
 
-public class RecieServiceImplTest {
+public class RecipeServiceImplTest {
 	private RecipeService recipeService;
 	@Mock
 	private RecipeRepository recipeRepository;

@@ -1,44 +1,48 @@
 package com.springframework.kim.controllers;
 
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import static org.mockito.Matchers.*;
+import static org.mockito.Mockito.when;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import com.springframework.kim.domain.Recipe;
 import com.springframework.kim.services.RecipeService;
 
-import static org.mockito.Matchers.*;
-
 public class RecipeControllerTest {
+    @Mock
+    private RecipeService    recipeService;
+    private RecipeController recipeController;
 
-	@Mock
-	private RecipeService recipeService;
+    @Test
+    public void testGetRecipe() throws Exception {
+        Recipe recipe = new Recipe();
 
-	private RecipeController recipeController;
+        recipe.setId(1L);
 
-	@BeforeEach
-	public void setUp() {
-		MockitoAnnotations.initMocks(this);
-		recipeController = new RecipeController(recipeService);
-	}
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
 
-	@Test
-	public void testGetRecipe() throws Exception {
-		Recipe recipe = new Recipe();
-		recipe.setId(1L);
+        when(recipeService.getById(anyLong())).thenReturn(recipe);
+        mockMvc.perform(get("/recipe/show/1"))
+               .andExpect(status().isOk())
+               .andExpect(view().name("recipe/show"))
+               .andExpect(model().attributeExists("recipe"));
+    }
 
-		MockMvc mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
-
-		when(recipeService.getById(anyLong())).thenReturn(recipe);
-
-		mockMvc.perform(get("/recipe/show/1")).andExpect(status().isOk()).andExpect(view().name("/recipe/show"));
-	}
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+        recipeController = new RecipeController(recipeService);
+    }
 }
