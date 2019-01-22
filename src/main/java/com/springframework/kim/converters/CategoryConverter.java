@@ -7,13 +7,10 @@ public class CategoryConverter extends NullsafeConverter<Category, CategoryComma
     @Override
     protected CategoryCommand convertInternal(Category source) {
         CategoryCommand categoryCommand = new CategoryCommand();
-
         categoryCommand.setId(source.getId());
         categoryCommand.setDescription(source.getDescription());
-
         return categoryCommand;
     }
 }
 
 
-//~ Formatted by Jindent --- http://www.jindent.com

@@ -7,10 +7,8 @@ public class UnitOfMeasureCommandConverter extends NullsafeConverter<UnitOfMeasu
     @Override
     protected UnitOfMeasure convertInternal(UnitOfMeasureCommand command) {
         UnitOfMeasure uom = new UnitOfMeasure();
-
         uom.setId(command.getId());
         uom.setUnitOfMeasure(command.getUnitOfMeasure());
-
         return uom;
     }
 }

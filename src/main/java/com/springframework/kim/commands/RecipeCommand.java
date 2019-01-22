@@ -16,8 +16,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class RecipeCommand {
-    private Set<Ingredient> ingredients = new HashSet<>();
-    private Set<Category>   categories  = new HashSet<>();
+    private Set<IngredientCommand> ingredients = new HashSet<>();
+    private Set<CategoryCommand>   categories  = new HashSet<>();
     private Long            id;
     private String          description;
     private Integer         prepTime;
@@ -28,7 +28,7 @@ public class RecipeCommand {
     private String          directions;
     private Byte[]          image;
     private Difficulty      difficulty;
-    private Notes           notes;
+    private NotesCommand           notes;
 }
 
 
